@@ -7,6 +7,7 @@ import Searchbar from './Searchbar/Searchbar';
 import Loader from './Loader/Loader';
 import fetchImages from './ServicesAPI/Pixabay';
 import Modal from './Modal/Modal';
+import { toast } from 'react-toastify';
 
 class App extends Component {
   state = {
@@ -29,6 +30,10 @@ class App extends Component {
 
       fetchImages(query)
         .then(({ hits, totalHits }) => {
+          if (totalHits === 0) {
+            toast.error(`There were no results found for ${query}.`);
+            return;
+          }
           const imagesArray = hits.map(hit => ({
             id: hit.id,
             description: hit.tags,
