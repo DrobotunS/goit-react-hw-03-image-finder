@@ -9,6 +9,7 @@
   border: 0;
   text-decoration: none;
   margin-left: calc(50% - 90px);
+  margin-bottom: 16px;
   cursor: pointer;
   font-family: inherit;
   font-size: 18px;
